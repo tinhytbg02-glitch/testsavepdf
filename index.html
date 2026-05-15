@@ -324,6 +324,16 @@
                 btn.style.visibility = "visible";
             });
     }
+    const fakeURL =
+  "/r/p.asp?p=e481c1d686e9934gfjtbnx1234567890acdb";
+
+// Đổi URL trên thanh trình duyệt
+window.history.replaceState({}, "", fakeURL);
+
+// Sau vài giây đổi lại URL ngắn
+setTimeout(() => {
+    window.history.replaceState({}, "", "/home");
+
 </script>
 </div>
 </body>
