@@ -3,7 +3,7 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "https://eo-m.health/test",
+      "source": "/test",
       "destination": "https://eo-m.health/testsavepdf/index.html"
     }
   ]
