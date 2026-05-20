@@ -1,8 +1,8 @@
 {
   "redirects": [
     {
-      "source": "/test",
-      "destination": "/testsavepdf",
+      "source": "eo-m.health/test",
+      "destination": "eo-m.health/testsavepdf",
       "permanent": false
     }
   ]
