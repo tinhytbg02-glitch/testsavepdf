@@ -3,8 +3,8 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/test",
-      "destination": "/testsavepdf/index.html"
+      "source": "/testsavepdf",
+      "destination": "/test/index.html"
     }
   ]
 }
