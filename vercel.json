@@ -1,8 +1,10 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/testsavepdf",
-      "destination": "/test"
+      "source": "/test",
+      "destination": "/testsavepdf/index.html"
     }
   ]
 }
