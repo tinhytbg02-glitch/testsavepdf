@@ -3,8 +3,8 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/testsavepdf",
-      "destination": "/test/index.html"
+      "source": "https://eo-m.health/test",
+      "destination": "https://eo-m.health/testsavepdf/index.html"
     }
   ]
 }
