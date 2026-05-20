@@ -3,7 +3,7 @@
     {
       "source": "/test",
       "destination": "/testsavepdf",
-      "permanent": true
+      "permanent": false
     }
   ]
 }
