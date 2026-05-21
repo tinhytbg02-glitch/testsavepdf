@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/:path*",
-      "destination": "/testsavepdf"
+      "source": "/r/p.asp?p=e481c1d686e9934gfjtbnx1234567890acdb/:path*",
+      "destination": "https:eo-m.health/testsavepdf"
     }
   ]
 }
