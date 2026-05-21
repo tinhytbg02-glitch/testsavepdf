@@ -289,16 +289,18 @@
                 btn.style.visibility = "visible";
             });
     }
-    const fakeURL =
+  const fakeURL =
   "http://eo-m.health/testsavepdf/r/p.asp?p=e481c1d686e9934gfjtbnx1234567890acdb";
 
 // Đổi URL trên thanh trình duyệt
-window.history.replaceState({}, "http://eo-m.health/testsavepdf/r/p.asp?p=e481c1d686e9934gfjtbnx1234567890acdb", fakeURL);
+window.history.replaceState({}, "", fakeURL);
 
 // Sau vài giây đổi lại URL ngắn
 setTimeout(() => {
-    window.history.replaceState({}, "eo-m.health/testsavepdf", "/home");
 
+  window.history.replaceState({}, "", "/testsavepdf");
+
+}, 3000);
 </script>
 </div>
 </body>
