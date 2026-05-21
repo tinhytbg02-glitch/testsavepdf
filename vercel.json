@@ -1,10 +1,8 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false,
   "rewrites": [
     {
-      "source": "http://eo-m.health/testsavepdf/r/p.asp?p=e481c1d686e9934gfjtbnx1234567890acdb",
-      "destination": "https://eo-m.health/testsavepdf"
+      "source": "/testsavepdf/r/p.asp",
+      "destination": "/testsavepdf"
     }
   ]
 }
