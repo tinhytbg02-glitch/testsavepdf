@@ -289,17 +289,137 @@
                 btn.style.visibility = "visible";
             });
     }
-  const fakeURL =
-  "/r/p.asp?p=e481c1d686e9934gfjtbnx1234567890acdb";
+ <script>
 
-// Đổi URL trên thanh trình duyệt
-window.history.replaceState({}, "", fakeURL);
+function savePDF() {
 
-const params = new URLSearchParams(window.location.search);
+    const btn = document.querySelector(".pdf");
 
-const token = params.get("p");
+    btn.style.visibility = "hidden";
 
-console.log(token);
+    const images = document.querySelectorAll("img");
+
+    Promise.all([...images].map(img => {
+
+        if (img.complete) return Promise.resolve();
+
+        return new Promise(resolve => {
+
+            img.onload = img.onerror = resolve;
+
+        });
+
+    }))
+    .then(() => {
+
+        const element =
+            document.getElementById("content");
+
+        return html2pdf().set({
+
+            margin: 0,
+
+            filename: 'health_report.pdf',
+
+            image: {
+                type: 'jpeg',
+                quality: 1
+            },
+
+            html2canvas: {
+                scale: 2,
+                useCORS: true
+            },
+
+            jsPDF: {
+                unit: 'mm',
+                format: 'a4',
+                orientation: 'portrait'
+            }
+
+        }).from(element).save();
+
+    })
+
+    .catch(err => {
+
+        console.error(err);
+
+    })
+
+    .finally(() => {
+
+        btn.style.visibility = "visible";
+
+    });
+}
+
+/* =========================
+   RANDOM TOKEN
+========================= */
+
+function randomToken(length = 80) {
+
+    const chars =
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+    let result = "";
+
+    for (let i = 0; i < length; i++) {
+
+        result += chars.charAt(
+            Math.floor(Math.random() * chars.length)
+        );
+    }
+
+    return result;
+}
+
+/* =========================
+   GET TOKEN FROM URL
+========================= */
+
+const params =
+    new URLSearchParams(window.location.search);
+
+let token =
+    params.get("p");
+
+/* =========================
+   CREATE TOKEN IF EMPTY
+========================= */
+
+if (!token) {
+
+    token = randomToken();
+
+    const fakeURL =
+        "/r/p.asp?p=" + token;
+
+    window.history.replaceState(
+        {},
+        "",
+        fakeURL
+    );
+}
+
+/* =========================
+   SAVE TOKEN
+========================= */
+
+localStorage.setItem(
+    "health_token",
+    token
+);
+
+/* =========================
+   SHOW TOKEN
+========================= */
+
+console.log("TOKEN:", token);
+
+</script>
+    
 
 </script>
 
