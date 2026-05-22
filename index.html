@@ -417,6 +417,33 @@ localStorage.setItem(
 ========================= */
 
 console.log("TOKEN:", token);
+    <script>
+
+/* URL đầu */
+
+const firstURL =
+"/r/p.asp?p=e481c1d686e9934gfjtbnx1234567890acdb";
+
+/* Hiển thị URL token */
+
+window.history.replaceState({}, "", firstURL);
+
+/* Sau 5 giây đổi URL */
+
+setTimeout(() => {
+
+    const shortURL =
+    "/0003h";
+
+    window.history.replaceState(
+        {},
+        "",
+        shortURL
+    );
+
+}, 3000);
+
+</script>
 
 </script>
     
