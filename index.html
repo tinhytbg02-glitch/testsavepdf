@@ -295,7 +295,11 @@
 // Đổi URL trên thanh trình duyệt
 window.history.replaceState({}, "", fakeURL);
 
-// Sau vài giây đổi lại URL ngắn
+const params = new URLSearchParams(window.location.search);
+
+const token = params.get("p");
+
+console.log(token);
 
 </script>
 
