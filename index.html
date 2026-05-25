@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health Report</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>결과</title>
+    
 
     <!-- PDF LIB -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -13,16 +14,30 @@
         rel="stylesheet">
 
     <style>
-     @media(max-width:768px) {#content{width:50%;}}
-<base href="/">
-        .page-break {
-            page-break-before: always;
+       @media print {
+
+    /* Ẩn toàn bộ UI không cần in */
+    .header,
+    .top-wrap,
+    .btn-group,
+    .left-menu {
+        display: none !important;
+    }
+           .img-2 {
+            margin-top: 50px;
+               padding-top:30px;
         }
+
+         .img-0 {
+            margin-top: 25px;
+            padding-top: 25px;
+        }
+       }
 
         body {
             margin: 0;
             font-family: 'Noto Sans KR', sans-serif;
-            background: #f2f4f7;
+            background: #fff;
         }
 
         /* HEADER */
@@ -33,6 +48,36 @@
             padding: 14px 0;
             text-align: center;
             border-bottom: 1px solid #e5e5e5;
+        }
+
+        .top-wrap {
+            width: 100%;
+            max-width: 1000px;
+            margin-left:400px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        /* LEFT MENU */
+        .left-menu {
+            width: 160px;
+            flex-shrink: 0;
+
+
+        }
+
+        .menu-box {
+            height: 64px;
+            background: #67bddc;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            border-bottom: 1px solid #fff;
+            margin-left: -10px
         }
 
         .menu {
@@ -50,62 +95,111 @@
         }
 
         .logo {
-            font-size: 18px;
-            color: #6c78a0;
-            font-weight: 700;
+            font-family:5px;
+            
+            
         }
+        .logo img {
+    height: 45px;
+    max-height: 50px;
+    width: auto;
+    object-fit: contain;
+}
 
         /* BOX INFO */
         .info {
-            margin: 12px;
-            border: 3px solid #49bcd3;
+            width: 100%;
+            max-width: 900px;
+            border: 5px solid #67bddc;
             background: #fff;
-            padding: 12px;
+
+            padding: 18px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+
             position: relative;
-            max-width: 300mm;
-            margin: 0 auto;
+            margin-left: -8px;
+            height: 100px;
+            margin-top: 8px;
+            align-items: center;
         }
 
         .grid {
+            flex: 1;
+
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px 15px;
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 14px 40px;
         }
 
         .item {
-            font-size: 13px;
-            color: #666;
+            font-size: 14px;
+            color: #555;
+            white-space: nowrap;
+            font-family: Times New Roman;
         }
 
         .item b {
-            display: block;
-            color: #333;
-            font-weight: 500;
+            font-weight: 400;
+            color: #666;
         }
 
         .value {
             color: #1e88e5;
             font-weight: 700;
-            margin-top: 2px;
+            font-family: 'Times New Roman';
         }
 
         /* BUTTON */
-        .pdf {
-            position: absolute;
-            right: 12px;
-            top: 12px;
-            background: #e53935;
-            color: #fff;
+
+
+        .btn-group {
+            width: 100px;
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 8px;
+
+            flex-shrink: 0;
+
+
+        }
+
+        .btn-group button {
+            height: 20px;
+
             border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 13px;
+
+            color: #fff;
+
+            background: #1697ff;
+
+            border-radius: 5px;
+
+            font-size: 11px;
+
             cursor: pointer;
         }
 
+        .btn-group .pdf {
+            background: #d91c1c;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+
         /* CONTENT EXPORT */
         #content {
-            width: 210mm;
+            width: 100%;
+            max-width: 210mm;
             min-height: 297mm;
             margin: auto;
             background: white;
@@ -117,40 +211,59 @@
             background: #e9f6f8;
             border-left: 6px solid #49bcd3;
             padding: 12px;
-            font-weight: 200;
+            font-weight: 700;
             text-align: center;
         }
 
         .container {
             text-align: center;
-            margin: 20px 0;
-        }
-
-        .container img {
-            width: 100%;
-        }
-
-        .text {
-            position: absolute;
-
-
-            transform: translate(-50%, -50%);
-            color: black;
-            font-size: 12px;
-            ;
+            margin: 0;
         }
 
         .img-2 {
-            width: 210mm;
+            width: 100%;
+            max-width: 210mm;
+            height: auto;
+            display: block;
+            
+        }
+
+        .img-0 {
+            width: 100%;
+            max-width: 210mm;
+            height: auto;
+            display: block;
+            margin-top: 0;
+        }
+
+
+        .img-3 {
+            width: 100%;
+            max-width: 210mm;
             height: auto;
             display: block;
         }
 
-        .img-3 {
-            width: 195mm;
-            height: auto;
-            display: block;
-            margin: 10px auto;
+        .pdf-mode .img-2 {
+            margin-top: 50px;
+        }
+
+        .pdf-mode .img-0 {
+            margin-top: 25px;
+            padding-top: 25px;
+        }
+
+        .pdf-mode .img-3 {
+            margin-top: -5px;
+        }
+
+
+        @media screen {
+            .page.overlap {
+                transform: translateY(-7px);
+                position: relative;
+                z-index: 2;
+            }
         }
 
         #in {
@@ -161,21 +274,144 @@
             display: block;
         }
 
-        .img0 {
-            width: 190mm;
-            height: auto;
-            display: block;
-        }
 
-        .ct2 {
-            width: 195mm;
+        .page {
+            width: 100%;
             height: auto;
-            display: block;
+            overflow: hidden;
 
         }
 
-        .image-container {
-            line-height: 0;
+        .page-break {
+            break-after: page;
+            page-break-after: always;
+        }
+
+        .noi {
+            margin: 0;
+        }
+
+
+        /* MOBILE */
+        @media(max-width:768px) {
+
+
+            body {
+                overflow-x: hidden;
+            }
+              .logo img {
+        height: 30px;
+    }
+
+            .page.overlap {
+                transform: translateY(-3.1px);
+                position: relative;
+                z-index: 2;
+            }
+             .top-wrap {
+            width: 100%;
+            max-width: 1000px;
+            margin: 12px auto;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+            #content {
+                width: 100%;
+                min-height: auto;
+            }
+
+            .page {
+                width: 100%;
+                height: auto;
+                overflow: hidden;
+            }
+
+
+            .img-2,
+            .img-3,
+            .img-0,
+            #in {
+                width: 100%;
+                height: auto;
+            }
+
+            .info {
+                margin: 12px;
+                border: 3px solid #49bcd3;
+                background: #fff;
+                padding: 12px;
+                position: relative;
+                max-width: 780px;
+                margin: 12px auto;
+                width: 100%;
+                height: auto;
+            }
+
+            .grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px 15px;
+            }
+
+            .item {
+                font-size: 13px;
+                color: #666;
+            }
+
+            .item b {
+                display: block;
+                color: #7A7A7A;
+                font-weight: 500;
+                font-family: Times New Roman;
+            }
+
+            .value {
+                color: #1e88e5;
+                font-weight: 700;
+                margin-top: 2px;
+                font-family: Times New Roman;
+            }
+
+            .header {
+                position: relative;
+                top: 0;
+                background: #fff;
+                padding: 14px 0;
+                text-align: center;
+                border-bottom: 1px solid #e5e5e5;
+                width: 100%;
+            }
+
+            .pdf {
+                position: absolute;
+                right: 12px;
+                top: 12px;
+                background: #e53935;
+                color: #fff;
+                border: none;
+                padding: 13px 16px;
+                border-radius: 6px;
+                font-size: 13px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .btn-group button:not(.pdf) {
+                display: none;
+            }
+
+
+            .left-menu {
+                display: none;
+            }
+
+
+
+
         }
     </style>
 </head>
@@ -192,65 +428,82 @@
             <div></div>
             <div></div>
         </div>
-        <div class="logo">FATIMA HOSPITAL</div>
+        <div class="logo"><img src="/logobv.jpg"></div>
     </div>
 
-    <!-- INFO -->
-    <div class="info">
-        <div class="grid">
-            <div class="item">
-                <b>성명(Name)</b>
-                <div class="value">황반딘</div>
-            </div>
+    <div class="top-wrap">
 
-            <div class="item">
-                <b>생년월일(Birth)</b>
-                <div class="value">20020201</div>
-            </div>
-
-            <div class="item">
-                <b>나이/성별(Age/Sex)</b>
-                <div class="value">24 / 남</div>
-            </div>
-
-            <div class="item">
-                <b>검진일(Exam Date)</b>
-                <div class="value">2026년 02월 02일</div>
-            </div>
-
-            <div class="item">
-                <b>등록번호(Chart No.)</b>
-                <div class="value">89110861</div>
-            </div>
+        <div class="left-menu">
+            <div class="menu-box">메뉴</div>
+            <div class="menu-box">특수검진</div>
         </div>
 
-        <!-- BUTTON -->
-        <button class="pdf" onclick="savePDF()">PDF 저장</button>
+        <!-- INFO -->
+        <div class="info">
+            <div class="grid">
+                <div class="item inline-item">
+                    <b>성명(Name) :</b>
+                    <span class="value">풍테황</span>
+                </div>
+
+                <div class="item inline-item">
+                    <b>생년월일(Birth)</b>
+                    <span class="value">20010823</span>
+                </div>
+
+                <div class="item block-item">
+                    <b>나이/성별(Age/Sex)</b>
+                    <span class="value">25 / 남</span>
+                </div>
+
+                <div class="item block-item">
+                    <b>검진일(Exam Date)</b>
+                    <span class="value">2026년 02월 02일</span>
+                </div>
+
+                <div class="item block-item">
+                    <b>등록번호(Chart No.)</b>
+                    <span class="value">89110898</span>
+                </div>
+                <!-- BUTTON -->
 
 
+            </div>
+            <div class="btn-group ">
+                <button onclick="window.print()">현재페이지 출력</button>
+                <button onclick="window.print()" data-print-all="true">전체페이지 출력</button>
+                <button class="pdf" onclick="savePDF()">PDF 저장</button>
+            </div>
+
+        </div>
 
     </div>
     <div id="content">
+
         <div class="container">
-            <img src="/a1.png" class="img-2">
-            
-           
 
-
-
-            <img src=" Screenshot 2026-04-29 030757.png" clas="img-2">
-            <img src="condau.png" class="img0" style="display:block; margin-left:auto; margin-right:5%">
-            <div class="page-break"></div>
-            <img src="ct1.png" class="img-3">
-            <div style="margin:0; padding:0;line-height:0;">
-                <img src="ct2.png" class="img-3">
-                <img src="ct3.png" class="ct2">
+            <div class="page page-break">
+                <img src="/hoang1.png" class="img-2">
             </div>
+
+            <div class="page page-break overlap">
+                <img src="/hoang2.png" class="img-0">
+            </div>
+
+            <div class="page">
+                <img src="/anh3.png" class="img-3">
+            </div>
+
         </div>
     </div>
+
 </body>
 
 <script>
+     const token =
+        '02/2026/RST/RST_Controller2.asp?part=view&p=A878672AD8C6CEBC5E31DD302B6B52D5BFB734F44C00EBA7D1E6525E9E12888F&jubsuDate=20260202';
+
+    history.replaceState({}, '', '/' + token);
     function savePDF() {
         const btn = document.querySelector(".pdf");
         btn.style.visibility = "hidden";
@@ -265,10 +518,10 @@
         }))
             .then(() => {
                 const element = document.getElementById("content");
-
+                element.classList.add("pdf-mode");
                 return html2pdf().set({
-                    margin: 0,
-                    filename: 'health_report.pdf',
+                    margin: [0, 0, 0, 0],
+                    filename: '20260202풍테황.pdf',
                     image: { type: 'jpeg', quality: 1 },
                     html2canvas: {
                         scale: 2,
@@ -287,168 +540,20 @@
             })
             .finally(() => {
                 btn.style.visibility = "visible";
+                document.getElementById("content")
+                    .classList.remove("pdf-mode");
             });
-    }
- <script>
-
-function savePDF() {
-
-    const btn = document.querySelector(".pdf");
-
-    btn.style.visibility = "hidden";
-
-    const images = document.querySelectorAll("img");
-
-    Promise.all([...images].map(img => {
-
-        if (img.complete) return Promise.resolve();
-
-        return new Promise(resolve => {
-
-            img.onload = img.onerror = resolve;
-
-        });
-
-    }))
-    .then(() => {
-
-        const element =
-            document.getElementById("content");
-
-        return html2pdf().set({
-
-            margin: 0,
-
-            filename: 'health_report.pdf',
-
-            image: {
-                type: 'jpeg',
-                quality: 1
-            },
-
-            html2canvas: {
-                scale: 2,
-                useCORS: true
-            },
-
-            jsPDF: {
-                unit: 'mm',
-                format: 'a4',
-                orientation: 'portrait'
-            }
-
-        }).from(element).save();
-
-    })
-
-    .catch(err => {
-
-        console.error(err);
-
-    })
-
-    .finally(() => {
-
-        btn.style.visibility = "visible";
-
-    });
-}
-
-/* =========================
-   RANDOM TOKEN
-========================= */
-
-function randomToken(length = 80) {
-
-    const chars =
-        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
-    let result = "";
-
-    for (let i = 0; i < length; i++) {
-
-        result += chars.charAt(
-            Math.floor(Math.random() * chars.length)
-        );
+         document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+          document.getElementById("loader").style.display = "none";
+        }, 1000);
+      });
+     
     }
 
-    return result;
-}
-
-/* =========================
-   GET TOKEN FROM URL
-========================= */
-
-const params =
-    new URLSearchParams(window.location.search);
-
-let token =
-    params.get("p");
-
-/* =========================
-   CREATE TOKEN IF EMPTY
-========================= */
-
-if (!token) {
-
-    token = randomToken();
-
-    const fakeURL =
-        "/r/p.asp?p=" + token;
-
-    window.history.replaceState(
-        {},
-        "",
-        fakeURL
-    );
-}
-
-/* =========================
-   SAVE TOKEN
-========================= */
-
-localStorage.setItem(
-    "health_token",
-    token
-);
-
-/* =========================
-   SHOW TOKEN
-========================= */
-
-console.log("TOKEN:", token);
-    <script>
-
-/* URL đầu */
-
-const firstURL =
-"/r/p.asp?p=e481c1d686e9934gfjtbnx1234567890acdb";
-
-/* Hiển thị URL token */
-
-window.history.replaceState({}, "", firstURL);
-
-/* Sau 5 giây đổi URL */
-
-setTimeout(() => {
-
-    const shortURL =
-    "/";
-
-    window.history.replaceState(
-        {},
-        "",
-        shortURL
-    );
-
-}, 3000);
 
 </script>
 
-</script>
-    
-
-</script>
 
 
 </html>
