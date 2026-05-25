@@ -1,7 +1,11 @@
 {
   "rewrites": [
+     {
+      "source": "/02/:path*",
+      "destination": "https://testsavepdf.vercel.app/"
+    },
     {
-      "source": "/02/(.*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
